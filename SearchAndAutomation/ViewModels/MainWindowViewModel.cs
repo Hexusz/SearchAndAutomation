@@ -1,7 +1,12 @@
 ﻿using Prism.Mvvm;
+using SAAlib;
 using Prism.Commands;
-using System.Windows.Media.Imaging;
+using System.Drawing;
+using System;
+using System.IO;
 using System.Diagnostics;
+using System.Windows.Media.Imaging;
+using SearchAndAutomation.Models;
 
 
 namespace SearchAndAutomation.ViewModels
@@ -15,7 +20,7 @@ namespace SearchAndAutomation.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
-        private BitmapImage _currentImage = new BitmapImage();
+        private BitmapImage _currentImage;
         public BitmapImage CurrentImage
         {
             get { return _currentImage; }
@@ -55,7 +60,7 @@ namespace SearchAndAutomation.ViewModels
 
         void OnRefreshImage(object p)
         {
-            
+            CurrentImage = ImageWorker.GetScreenShotFromHandler(_currentProcess.MainWindowHandle);
         }
 
         bool CanRefreshImage(object p) 
@@ -74,6 +79,8 @@ namespace SearchAndAutomation.ViewModels
         {
 
             SelectProcessCommand = new DelegateCommand<object>(OnSelectProcess, CanSelectProcess);
+
+            RefreshImageCommand = new DelegateCommand<object>(OnRefreshImage, CanRefreshImage);
 
         }
     }

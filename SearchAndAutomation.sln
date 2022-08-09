@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchAndAutomation", "SearchAndAutomation\SearchAndAutomation.csproj", "{80E81B1D-EB16-4F70-88E4-1D7BF9D974FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAAlib", "SAAlib\SAAlib.csproj", "{CFEB7193-8D43-440C-B717-8B7B59799720}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{80E81B1D-EB16-4F70-88E4-1D7BF9D974FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80E81B1D-EB16-4F70-88E4-1D7BF9D974FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80E81B1D-EB16-4F70-88E4-1D7BF9D974FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFEB7193-8D43-440C-B717-8B7B59799720}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFEB7193-8D43-440C-B717-8B7B59799720}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFEB7193-8D43-440C-B717-8B7B59799720}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFEB7193-8D43-440C-B717-8B7B59799720}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
