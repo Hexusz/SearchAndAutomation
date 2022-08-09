@@ -1,0 +1,13 @@
+﻿<ui:UiWindow x:Class="SearchAndAutomation.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Style="{StaticResource UiWindow}"
+        WindowStartupLocation="CenterScreen"
+        Title="{Binding Title}" Height="350" Width="525" >
+    <Grid>
+        <ContentControl prism:RegionManager.RegionName="ContentRegion" />
+    </Grid>
+</ui:UiWindow>
