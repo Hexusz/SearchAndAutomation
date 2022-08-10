@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Input;
 using System.Threading.Tasks;
-using System.Windows.Interactivity;
+using Microsoft.Xaml.Behaviors;
 
 namespace SearchAndAutomation.ViewModels
 {

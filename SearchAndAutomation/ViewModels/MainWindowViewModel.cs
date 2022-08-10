@@ -20,9 +20,8 @@ namespace SearchAndAutomation.ViewModels
 
         public void OnMouseDown(object sender, MouseCaptureArgs e) 
         {
-            
-                var rect = new Struct.Rect();
-            WinFunc.GetWindowRect(CurrentProcess.MainWindowHandle+1, ref rect);
+            var rect = new Struct.Rect();
+            WinFunc.GetWindowRect(CurrentProcess.MainWindowHandle, ref rect);
             WinFunc.SetCursorPos(rect.Left+(int)e.X, rect.Top + (int)e.Y);
         }
         public void OnMouseMove(object sender, MouseCaptureArgs e) 
