@@ -4,15 +4,36 @@ using Prism.Commands;
 using System.Drawing;
 using System;
 using System.IO;
+using System.Linq;
 using System.Diagnostics;
 using System.Windows.Media.Imaging;
 using SearchAndAutomation.Models;
+using SAAlib;
 
 
 namespace SearchAndAutomation.ViewModels
 {
-    public class MainWindowViewModel : BindableBase
+    public class MainWindowViewModel : BindableBase, IMouseCaptureProxy
     {
+        public event EventHandler Capture;
+        public event EventHandler Release;
+
+        public void OnMouseDown(object sender, MouseCaptureArgs e) 
+        {
+            
+                var rect = new Struct.Rect();
+            WinFunc.GetWindowRect(CurrentProcess.MainWindowHandle+1, ref rect);
+            WinFunc.SetCursorPos(rect.Left+(int)e.X, rect.Top + (int)e.Y);
+        }
+        public void OnMouseMove(object sender, MouseCaptureArgs e) 
+        { 
+
+        }
+        public void OnMouseUp(object sender, MouseCaptureArgs e) 
+        {
+        
+        }
+
         private string _title = "Prism Application";
         public string Title
         {
@@ -54,12 +75,13 @@ namespace SearchAndAutomation.ViewModels
 
         bool CanSelectProcess(object p) => true;
 
-
-
         public DelegateCommand<object> RefreshImageCommand { get; private set; }
 
         void OnRefreshImage(object p)
         {
+            //delete
+            CurrentProcess = Process.GetProcesses().First(x => x.ProcessName.Contains("Banana "));
+            ///////
             CurrentImage = ImageWorker.GetScreenShotFromHandler(_currentProcess.MainWindowHandle);
         }
 

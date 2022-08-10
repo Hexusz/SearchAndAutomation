@@ -4,20 +4,28 @@
         xmlns:prism="http://prismlibrary.com/"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         prism:ViewModelLocator.AutoWireViewModel="True"
+        xmlns:vm="clr-namespace:SearchAndAutomation.ViewModels"
         Style="{StaticResource UiWindow}"
         WindowStartupLocation="CenterScreen"
         Title="{Binding Title}" Height="720" Width="1280" >
     
-    <Grid>
-        <ToolBar Height="auto" VerticalAlignment="Top">
+    <DockPanel>
+        <ToolBar DockPanel.Dock="Top" Height="auto" VerticalAlignment="Top">
             <ToolBar.Items>
                 <ui:TextBox x:Name="processTB" Margin="4"/>
                 <ui:Button Margin="4" Icon="SelectObject24" Content="Select process" Command="{Binding SelectProcessCommand}" CommandParameter="{Binding ElementName=processTB, Path=Text}"></ui:Button>
                 <ui:Button Margin="4" Icon="Image24" Content="Refresh image" Command="{Binding RefreshImageCommand}"></ui:Button>
-
             </ToolBar.Items>
-            </ToolBar>
-
-        <Image Source="{Binding CurrentImage}" />
-    </Grid>
+        </ToolBar>
+        <Grid DockPanel.Dock="Bottom">
+            <Viewbox Margin="3,3,3,3">
+                <Image HorizontalAlignment="Left" Source="{Binding CurrentImage}" xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity">
+                    <i:Interaction.Behaviors>
+                        <vm:MouseCaptureBehavior Proxy="{Binding}" />
+                    </i:Interaction.Behaviors>
+                </Image>
+            </Viewbox>
+            
+        </Grid>
+    </DockPanel>
 </ui:UiWindow>
