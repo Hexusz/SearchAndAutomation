@@ -7,7 +7,7 @@ using System.Windows.Input;
 using System.Threading.Tasks;
 using Microsoft.Xaml.Behaviors;
 
-namespace SearchAndAutomation.ViewModels
+namespace SearchAndAutomation.ViewModels.ImageHandler.Base
 {
     public class MouseCaptureBehavior : Behavior<FrameworkElement>
     {
@@ -58,17 +58,17 @@ namespace SearchAndAutomation.ViewModels
         protected override void OnAttached()
         {
             base.OnAttached();
-            this.AssociatedObject.PreviewMouseDown += OnMouseDown;
-            this.AssociatedObject.PreviewMouseMove += OnMouseMove;
-            this.AssociatedObject.PreviewMouseUp += OnMouseUp;
+            AssociatedObject.PreviewMouseDown += OnMouseDown;
+            AssociatedObject.PreviewMouseMove += OnMouseMove;
+            AssociatedObject.PreviewMouseUp += OnMouseUp;
         }
 
         protected override void OnDetaching()
         {
             base.OnDetaching();
-            this.AssociatedObject.PreviewMouseDown -= OnMouseDown;
-            this.AssociatedObject.PreviewMouseMove -= OnMouseMove;
-            this.AssociatedObject.PreviewMouseUp -= OnMouseUp;
+            AssociatedObject.PreviewMouseDown -= OnMouseDown;
+            AssociatedObject.PreviewMouseMove -= OnMouseMove;
+            AssociatedObject.PreviewMouseUp -= OnMouseUp;
         }
 
         private void OnMouseDown(object sender, MouseButtonEventArgs e)
@@ -76,13 +76,13 @@ namespace SearchAndAutomation.ViewModels
             var proxy = GetProxy(this);
             if (proxy != null)
             {
-                var pos = e.GetPosition(this.AssociatedObject);
+                var pos = e.GetPosition(AssociatedObject);
                 var args = new MouseCaptureArgs
                 {
                     X = pos.X,
                     Y = pos.Y,
-                    LeftButton = (e.LeftButton == MouseButtonState.Pressed),
-                    RightButton = (e.RightButton == MouseButtonState.Pressed)
+                    LeftButton = e.LeftButton == MouseButtonState.Pressed,
+                    RightButton = e.RightButton == MouseButtonState.Pressed
                 };
                 proxy.OnMouseDown(this, args);
             }
@@ -93,13 +93,13 @@ namespace SearchAndAutomation.ViewModels
             var proxy = GetProxy(this);
             if (proxy != null)
             {
-                var pos = e.GetPosition(this.AssociatedObject);
+                var pos = e.GetPosition(AssociatedObject);
                 var args = new MouseCaptureArgs
                 {
                     X = pos.X,
                     Y = pos.Y,
-                    LeftButton = (e.LeftButton == MouseButtonState.Pressed),
-                    RightButton = (e.RightButton == MouseButtonState.Pressed)
+                    LeftButton = e.LeftButton == MouseButtonState.Pressed,
+                    RightButton = e.RightButton == MouseButtonState.Pressed
                 };
                 proxy.OnMouseMove(this, args);
             }
@@ -110,13 +110,13 @@ namespace SearchAndAutomation.ViewModels
             var proxy = GetProxy(this);
             if (proxy != null)
             {
-                var pos = e.GetPosition(this.AssociatedObject);
+                var pos = e.GetPosition(AssociatedObject);
                 var args = new MouseCaptureArgs
                 {
                     X = pos.X,
                     Y = pos.Y,
-                    LeftButton = (e.LeftButton == MouseButtonState.Pressed),
-                    RightButton = (e.RightButton == MouseButtonState.Pressed)
+                    LeftButton = e.LeftButton == MouseButtonState.Pressed,
+                    RightButton = e.RightButton == MouseButtonState.Pressed
                 };
                 proxy.OnMouseUp(this, args);
             }

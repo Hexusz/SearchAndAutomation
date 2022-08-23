@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SearchAndAutomation.ViewModels
+namespace SearchAndAutomation.ViewModels.ImageHandler.Base
 {
     public interface IMouseCaptureProxy
     {

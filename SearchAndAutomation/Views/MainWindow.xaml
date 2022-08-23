@@ -4,8 +4,7 @@
         xmlns:prism="http://prismlibrary.com/"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        xmlns:vm="clr-namespace:SearchAndAutomation.ViewModels"
-        Style="{StaticResource UiWindow}"
+        xmlns:imageBase="clr-namespace:SearchAndAutomation.ViewModels.ImageHandler.Base"
         WindowStartupLocation="CenterScreen"
         Title="{Binding Title}" Height="720" Width="1280" >
     
@@ -18,13 +17,27 @@
             </ToolBar.Items>
         </ToolBar>
         <Grid DockPanel.Dock="Bottom">
-            <Viewbox Margin="3,3,3,3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="300"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Viewbox Margin="10,0,10,10" Grid.Column="0">
                 <Image HorizontalAlignment="Left" Source="{Binding CurrentImage}" xmlns:i="http://schemas.microsoft.com/xaml/behaviors">
                     <i:Interaction.Behaviors>
-                        <vm:MouseCaptureBehavior Proxy="{Binding}" />
+                        <imageBase:MouseCaptureBehavior Proxy="{Binding}" />
                     </i:Interaction.Behaviors>
                 </Image>
             </Viewbox>
+            <DockPanel Grid.Column="1">
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                    <ui:Button Margin="4" Icon="SelectObject24" Content="Add action" Command="{Binding }" CommandParameter="{Binding ElementName=processTB, Path=Text}"></ui:Button>
+                    <ui:Button Margin="4" Icon="SelectObject24" Content="Play" Command="{Binding }" CommandParameter="{Binding ElementName=processTB, Path=Text}"></ui:Button>
+                </StackPanel>
+
+                <ListBox MinHeight="100" Margin="4,10,10,10">
+                    
+                </ListBox>
+            </DockPanel>
             
         </Grid>
     </DockPanel>

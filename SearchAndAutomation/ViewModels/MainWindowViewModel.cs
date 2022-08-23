@@ -9,7 +9,7 @@ using System.Diagnostics;
 using System.Windows.Media.Imaging;
 using SearchAndAutomation.Models;
 using SAAlib;
-
+using SearchAndAutomation.ViewModels.ImageHandler.Base;
 
 namespace SearchAndAutomation.ViewModels
 {
@@ -20,9 +20,9 @@ namespace SearchAndAutomation.ViewModels
 
         public void OnMouseDown(object sender, MouseCaptureArgs e) 
         {
-            var rect = new Struct.Rect();
-            WinFunc.GetWindowRect(CurrentProcess.MainWindowHandle, ref rect);
-            WinFunc.SetCursorPos(rect.Left+(int)e.X, rect.Top + (int)e.Y);
+            //var rect = new Struct.Rect();
+            //WinFunc.GetWindowRect(CurrentProcess.MainWindowHandle, ref rect);
+            //WinFunc.SetCursorPos(rect.Left+(int)e.X, rect.Top + (int)e.Y);
         }
         public void OnMouseMove(object sender, MouseCaptureArgs e) 
         { 
