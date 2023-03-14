@@ -10,6 +10,9 @@ using System.Windows.Media.Imaging;
 using SearchAndAutomation.Models;
 using SAAlib;
 using SearchAndAutomation.ViewModels.ImageHandler.Base;
+using SearchAndAutomation.Views;
+using SearchAndAutomation.ViewModels.Dialogs;
+using SearchAndAutomation.Views.Dialogs;
 
 namespace SearchAndAutomation.ViewModels
 {
@@ -94,6 +97,20 @@ namespace SearchAndAutomation.ViewModels
             return false;
         }
 
+
+        public DelegateCommand<object> AddActionCommand { get; private set; }
+
+        void OnAddAction(object p)
+        {
+            var licenseDialog = new AddActionDialog();
+            licenseDialog.Show();
+        }
+
+        bool CanAddAction(object p)
+        {
+            return true;
+        }
+
         #endregion
 
         public MainWindowViewModel()
@@ -103,6 +120,7 @@ namespace SearchAndAutomation.ViewModels
 
             RefreshImageCommand = new DelegateCommand<object>(OnRefreshImage, CanRefreshImage);
 
+            AddActionCommand = new DelegateCommand<object>(OnAddAction, CanAddAction);
         }
     }
 }

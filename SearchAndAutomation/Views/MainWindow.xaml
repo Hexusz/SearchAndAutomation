@@ -30,7 +30,7 @@
             </Viewbox>
             <DockPanel Grid.Column="1">
                 <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-                    <ui:Button Margin="4" Icon="SelectObject24" Content="Add action" Command="{Binding }" CommandParameter="{Binding ElementName=processTB, Path=Text}"></ui:Button>
+                    <ui:Button Margin="4" Icon="SelectObject24" Content="Add action" Command="{Binding AddActionCommand}"></ui:Button>
                     <ui:Button Margin="4" Icon="SelectObject24" Content="Play" Command="{Binding }" CommandParameter="{Binding ElementName=processTB, Path=Text}"></ui:Button>
                 </StackPanel>
 
